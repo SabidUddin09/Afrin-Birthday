@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-top: 40px;
+}
+
+p {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 30px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+}
+
+/* Popup image */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4b6e;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: hearts 6s linear infinite;
+}
+
+@keyframes hearts {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday, My Beautiful ❤️</h1>
+
+<p>
+You are the reason smiles feel warmer and days feel brighter.  
+I hope this birthday brings you happiness, love, and everything you dream of. 💖
+</p>
+
+<button onclick="showMessage()">Click for Surprise 🎁</button>
+
+<div class="hidden-message" id="message">
+    You are truly special to me.  
+    I’m grateful you exist in my life.  
+    Happy Birthday once again ❤️✨
+</div>
+
+<h2>Our Memories 📸</h2>
+
+<div class="gallery">
+    <img src="photo1.jpg" onclick="openPopup(this.src)">
+    <img src="photo2.jpg" onclick="openPopup(this.src)">
+    <img src="photo3.jpg" onclick="openPopup(this.src)">
+    <img src="photo4.jpg" onclick="openPopup(this.src)">
+</div>
+
+<div class="popup" id="popup" onclick="closePopup()">
+    <img id="popupImg">
+</div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+}
+
+function openPopup(src) {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupImg").src = src;
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
